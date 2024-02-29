@@ -1,0 +1,8 @@
+no podemos poner verbos en el self.path
+la funcion en la que hagamos algo debe tener una funcion que es la que 
+servidor resput
+
+GET: El recurso se ha obtenido y se transmite en el cuerpo del mensaje.
+HEAD: Los encabezados de entidad están en el cuerpo del mensaje.
+PUT o POST: El recurso que describe el resultado de la acción se transmite en el cuerpo del mensaje.
+TRACE: El cuerpo del mensaje contiene el mensaje de solicitud recibido por el servidor.
