@@ -8,6 +8,24 @@ estudiantes = [
         "apellido": "García",
         "carrera": "Ingeniería de Sistemas",
     },
+    {
+        "id": 2,
+        "nombre": "Felipe",
+        "apellido": "García",
+        "carrera": "Neutriologo",
+    },
+    {
+        "id": 3,
+        "nombre": "Eduardo",
+        "apellido": "García",
+        "carrera": "Albanieria",
+    },
+    {
+        "id": 4,
+        "nombre": "Pedrito",
+        "apellido": "García",
+        "carrera": "Ingeniería de Sistemas",
+    },
 ]
 
 class RESTRequestHandler(BaseHTTPRequestHandler):
@@ -23,6 +41,35 @@ class RESTRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
             estudiantes.clear()
             self.wfile.write(json.dumps(estudiantes).encode("utf-8"))
+        elif self.path == "/eliminar_estudiante":
+            self.send_response(201)
+            self.send_header("Content-type", "application/json")
+            self.end_headers()
+        elif self.path.startswith("/buscar_nombre/"):
+            letra = (self.path.split("/")[-1]).lower()
+            estudianteNom = filter(lambda estudiante: estudiante["nombre"][0].lower() == letra,estudiantes)
+            if (estudianteNom):
+                self.send_response(200)
+                self.send_header("Content-type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps(list(estudianteNom)).encode("utf-8"))
+        elif self.path.startswith("/contar_carreras"):
+            letra = (self.path.split("/")[-1]).lower()
+            nroCarreras = []
+            for carrera in estudiantes:
+                if carrera["carrera"] not in nroCarreras:
+                    nroCarreras.append(carrera["carrera"])
+            if (nroCarreras):
+                self.send_response(200)
+                self.send_header("Content-type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps(len(nroCarreras)).encode("utf-8"))
+        elif self.path.startswith("/contar_estudiantes"):
+            if (estudiantes):
+                self.send_response(200)
+                self.send_header("Content-type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps(len(estudiantes)).encode("utf-8"))
         elif self.path.startswith("/buscar_estudiante_id/"):
             id = int(self.path.split("/")[-1])
             estudiante = next(
