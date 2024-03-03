@@ -39,7 +39,6 @@ class RESTRequestHandler(BaseHTTPRequestHandler):
                 self.end_headers()
                 self.wfile.write(json.dumps(list(estudianteNom)).encode("utf-8"))
         elif self.path.startswith("/contar_carreras"):
-            letra = (self.path.split("/")[-1]).lower()
             nroCarreras = []
             for carrera in estudiantes:
                 if carrera["carrera"] not in nroCarreras:
