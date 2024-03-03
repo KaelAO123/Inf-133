@@ -8,6 +8,24 @@ estudiantes = [
         "apellido": "García",
         "carrera": "Ingeniería de Sistemas",
     },
+    {
+        "id": 2,
+        "nombre": "Gabriel",
+        "apellido": "Flores",
+        "carrera": "Economia",
+    },
+    {
+        "id": 3,
+        "nombre": "Gregorio",
+        "apellido": "Mamani",
+        "carrera": "Economia",
+    },
+    {
+        "id": 4,
+        "nombre": "Rosa",
+        "apellido": "Carvallo",
+        "carrera": "Informatica",
+    },
 ]
 
 
@@ -32,28 +50,28 @@ class RESTRequestHandler(BaseHTTPRequestHandler):
                 self.wfile.write(json.dumps(estudiante).encode("utf-8"))
 
         # mostrar las carreras
-        elif(self.path == ("/carreras")):
-            carreras = []
-            for carrera in estudiantes:
-                if carrera["carrera"] not in carreras:
-                    carreras.append(carrera["carrera"])
-            if (carreras):
+        elif(self.path == "/carreras"):
+            carreras_totales = []
+            for estudiante in estudiantes:
+                if estudiante["carrera"] not in carreras_totales:
+                    carreras_totales.append(estudiante["carrera"])
+            if (carreras_totales):
                 self.send_response(200)
                 self.send_header("Content-type", "application/json")
                 self.end_headers()
-                self.wfile.write(json.dumps(carreras).encode("utf-8"))
+                self.wfile.write(json.dumps(carreras_totales).encode("utf-8"))
         ################################################
                 
         # mostrar los estudiantes que estudian las carreras      
         elif(self.path.startswith("/carreras/")):
-            carrera = (self.path.split("/")[-1]).lower()
-            print(carrera)
-            estudiante_carrera = filter(lambda estudiante:estudiante["carrera"].lower()==carrera,estudiantes)
+            a = (self.path.split("/")[-1])
+            print(a)
+            estudiante_carrera = filter( lambda estudiante: estudiante["carrera"] == a,estudiantes)
             if (estudiante_carrera):
                 self.send_response(200)
                 self.send_header("Content-type", "application/json")
                 self.end_headers()
-                self.wfile.write(json.dumps(estudiante_carrera).encode("utf-8"))
+                self.wfile.write(json.dumps(list(estudiante_carrera)).encode("utf-8"))
         ################################################
                 
         else:
