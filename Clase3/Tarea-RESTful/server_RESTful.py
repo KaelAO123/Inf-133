@@ -64,9 +64,8 @@ class RESTRequestHandler(BaseHTTPRequestHandler):
                 
         # mostrar los estudiantes que estudian las carreras      
         elif(self.path.startswith("/carreras/")):
-            a = (self.path.split("/")[-1])
-            print(a)
-            estudiante_carrera = filter( lambda estudiante: estudiante["carrera"] == a,estudiantes)
+            carrera = (self.path.split("/")[-1]).lower()
+            estudiante_carrera = filter( lambda estudiante: estudiante["carrera"].lower() == carrera,estudiantes)
             if (estudiante_carrera):
                 self.send_response(200)
                 self.send_header("Content-type", "application/json")
