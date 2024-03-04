@@ -59,17 +59,12 @@ class RESTRequestHandler(BaseHTTPRequestHandler):
             for carrera in estudiantes:
                 if carrera["carrera"] not in nroCarreras:
                     nroCarreras.append(carrera["carrera"])
+            print(nroCarreras)
             if (nroCarreras):
                 self.send_response(200)
                 self.send_header("Content-type", "application/json")
                 self.end_headers()
                 self.wfile.write(json.dumps(len(nroCarreras)).encode("utf-8"))
-        elif self.path.startswith("/contar_estudiantes"):
-            if (estudiantes):
-                self.send_response(200)
-                self.send_header("Content-type", "application/json")
-                self.end_headers()
-                self.wfile.write(json.dumps(len(estudiantes)).encode("utf-8"))
         elif self.path.startswith("/buscar_estudiante_id/"):
             id = int(self.path.split("/")[-1])
             estudiante = next(
