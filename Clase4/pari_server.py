@@ -31,7 +31,6 @@ estudiantes = [
     },
 ]
 
-
 class RESTRequestHandler(BaseHTTPRequestHandler):
     def response_handler(self, status, data):
         self.send_response(status)
@@ -44,7 +43,6 @@ class RESTRequestHandler(BaseHTTPRequestHandler):
             (estudiante for estudiante in estudiantes if estudiante["id"] == id),
             None,
         )
-
     def read_data(self):
         content_length = int(self.headers["Content-Length"])
         data = self.rfile.read(content_length)
@@ -65,7 +63,7 @@ class RESTRequestHandler(BaseHTTPRequestHandler):
                     for estudiante in estudiantes
                     if (estudiante["apellido"] == apellido) and estudiante["nombre"] == nombre and estudiante["carrera"] == carrera
                 ]
-                if estudiantes_filtrados != []:
+                if estudiantes_filtrados == []:
                     self.response_handler(200, estudiantes_filtrados)
                 else:
                     self.response_handler(204, [])
@@ -169,4 +167,4 @@ def run_server(port=8000):
 
 
 if __name__ == "__main__":
-    run_server()
+    run_server() 

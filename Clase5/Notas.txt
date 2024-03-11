@@ -1,0 +1,8 @@
+Verse el documental redHat
+En rest y RestFUL usamos JSON
+en GraphQUL solo necesitamos dos rutas únicas, GET/graphql?query={}, POST/graphql?query={}
+
+SOAP = Protocolo    REST = Arquitectura    graphQL = Lenguaje de consultas
+
+graphQL != SQL
+HTTPSERVER: almacena la direccion y puerto de nuestro servidor
