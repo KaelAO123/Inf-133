@@ -5,4 +5,5 @@ en GraphQUL solo necesitamos dos rutas únicas, GET/graphql?query={}, POST/graph
 SOAP = Protocolo    REST = Arquitectura    graphQL = Lenguaje de consultas
 
 graphQL != SQL
+
 HTTPSERVER: almacena la direccion y puerto de nuestro servidor

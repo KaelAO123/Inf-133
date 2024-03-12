@@ -5,6 +5,8 @@ query = """
     {
         estudiantes{
             nombre
+            apellido
+            carrera
         }
     }
 """
@@ -13,7 +15,6 @@ query2= """
     {
         estudiantes{
             nombre
-            apellido
         }
     }
 """

@@ -1,3 +1,8 @@
 Clean Cod - La biblia de los desarrolladores Web
 Para la siguiente clase haremos un ejercicio 
 No pueden tener un nombre reservado como "id","self" etc
+
+Get = Obtener info
+Post = Poner recursos
+Put = Actualizar
+Delete = eliminar

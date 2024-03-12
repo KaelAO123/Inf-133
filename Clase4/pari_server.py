@@ -52,7 +52,6 @@ class RESTRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         parsed_path = urlparse(self.path)
         query_params = parse_qs(parsed_path.query)
-
         if parsed_path.path == "/estudiantes":
             if ("nombre" in query_params) and ("apellido" in query_params) and ("carrera" in query_params):
                 apellido = query_params["apellido"][0]

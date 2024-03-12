@@ -36,6 +36,12 @@ estudiantes = [
         apellido="Lopez", 
         carrera="Arquitectura"
     ),
+    Estudiante(
+        id=3, 
+        nombre="Josdkjsae", 
+        apellido="Lopez", 
+        carrera="Arquitectura"
+    ),
 ]
 
 schema = Schema(query=Query)
