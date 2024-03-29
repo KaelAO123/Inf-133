@@ -9,7 +9,6 @@ class Estudiante(ObjectType):
     apellido = String()
     carrera = String()
 
-
 class Query(ObjectType):
     estudiantes = List(Estudiante)
     estudiante_por_id = Field(Estudiante, id=Int())

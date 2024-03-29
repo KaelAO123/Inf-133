@@ -45,7 +45,7 @@ class PlayerHandler(BaseHTTPRequestHandler):
 
 def main():
     global player
-    player = Player("Alice")
+    player = Player("Kael Thas")
 
     try:
         server_address = ("", 8000)
