@@ -9,7 +9,7 @@ print(response.json())
 
 # POST /pizzas 
 mi_taco = {
-    "base": "Grande",
+    "base": "Grfjdksfkjdsande",
     "salsa": "Delgada",
     "toppings": ["Jamon", "Queso"],
     "guiso": "sin guiso"

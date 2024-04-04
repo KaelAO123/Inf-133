@@ -3,16 +3,20 @@ import sqlite3
 
 # Crear conexión a la base de datos
 conn = sqlite3.connect("restaurante.db")
+
+try :
+    conn.execute(
+        """
+        CREATE TABLE PLATOS
+        (id INTEGER PRIMARY KEY,
+        nombre TEXT NOT NULL,
+        precio DOUBLE NOT NULL,
+        categoria TEXT NOT NULL);
+        """
+    )
+except sqlite3.OperationalError:
+    print("La tabla PLATOS ya existe")
 # Crear tabla de carreras
-conn.execute(
-    """
-    CREATE TABLE PLATOS
-    (id INTEGER PRIMARY KEY,
-    nombre TEXT NOT NULL,
-    precio DOUBLE NOT NULL,
-    categoria TEXT NOT NULL);
-    """
-)
 
 # Insertar datos de carreras
 conn.execute(
@@ -50,13 +54,17 @@ for row in cursor:
 # (2, 'Licenciatura en Administración', 4)
 
 # Crear tablas de estudiantes
-conn.execute(
-    """
-    CREATE TABLE MESAS
-    (id INTEGER PRIMARY KEY,
-    numero INTEGER NOT NULL);
-    """
-)
+
+try :
+    conn.execute(
+        """
+        CREATE TABLE MESAS
+        (id INTEGER PRIMARY KEY,
+        numero INTEGER NOT NULL);
+        """
+    )
+except sqlite3.OperationalError:
+    print("La tabla MESAS ya existe")
 
 # Insertar datos de estudiantes
 conn.execute(
@@ -83,12 +91,6 @@ conn.execute(
     VALUES (4)
     """
 )
-conn.execute(
-    """
-    INSERT INTO MESAS (numero) 
-    VALUES (5)
-    """
-)
 # Consultar datos de estudiantes
 print("\nMESAS:")
 cursor = conn.execute("SELECT * FROM MESAS")
@@ -100,18 +102,21 @@ for row in cursor:
 # (2, 'María', 'Lopez', '1999-08-20')
 
 # Crear tabla de matriculación
-conn.execute(
-    """
-    CREATE TABLE PEDIDOS
-    (id INTEGER PRIMARY KEY,
-    plato_id INTEGER NOT NULL,
-    mesa_id INTEGER NOT NULL,
-    cantidad INTEGER NOT NULL,
-    fecha TEXT NOT NULL,
-    FOREIGN KEY (plato_id) REFERENCES PLATOS(id),
-    FOREIGN KEY (mesa_id) REFERENCES MESAS(id));
-    """
-)
+try :
+    conn.execute(
+        """
+        CREATE TABLE PEDIDOS
+        (id INTEGER PRIMARY KEY,
+        plato_id INTEGER NOT NULL,
+        mesa_id INTEGER NOT NULL,
+        cantidad INTEGER NOT NULL,
+        fecha TEXT NOT NULL,
+        FOREIGN KEY (plato_id) REFERENCES PLATOS(id),
+        FOREIGN KEY (mesa_id) REFERENCES MESAS(id));
+        """
+    )
+except sqlite3.OperationalError:
+    print("La tabla PEDIDOS ya existe")
 
 # Insertar datos de matriculación
 conn.execute(
@@ -122,20 +127,20 @@ conn.execute(
 )
 conn.execute(
     """
-    INSERT INTO PEDIDOS (mesa_id, plato_id, cantidad, fecha) 
+    INSERT INTO PEDIDOS (plato_id,mesa_id, cantidad, fecha) 
     VALUES (2, 3, 1, '2024-04-01')
     """
 )
 
 conn.execute(
     """
-    INSERT INTO PEDIDOS (mesa_id, plato_id, cantidad, fecha)
+    INSERT INTO PEDIDOS (plato_id,mesa_id, cantidad, fecha)
     VALUES (3, 1, 3, '2024-04-02')
     """
 )
 conn.execute(
     """
-    INSERT INTO PEDIDOS (mesa_id, plato_id, cantidad, fecha)
+    INSERT INTO PEDIDOS (plato_id,mesa_id, cantidad, fecha)
     VALUES (4, 4, 3, '2024-04-02')
     """
 )
@@ -156,13 +161,13 @@ for row in cursor:
 # print("\n##################################################################")
 # print("PARTE 2")
 # print("\n####\tACTUALIZAR\t####")
-# print("\nPLATOS ACTUALIZADOS:")
+# print("\nPLATOS:")
 # cursor = conn.execute(
 #     "SELECT * FROM PLATOS"
 # )
 # for row in cursor:
 #     print(row)
-# print("\nPLATOS:")
+# print("\nPLATOS ACTUALIZADOS:")
 # conn.execute(
 #     """
 #     UPDATE PLATOS
@@ -178,13 +183,13 @@ for row in cursor:
 # print("############################################")
 # # Listar datos de matriculación
 # print("\n####\tACTUALIZAR\t####")
-# print("\nPLATOS ACTUALIZADOS:")
+# print("\nPLATOS:")
 # cursor = conn.execute(
 #     "SELECT * FROM PLATOS"
 # )
 # for row in cursor:
 #     print(row)
-# print("\nPLATOS:")
+# print("\nPLATOS ACTUALIZADOS:")
 # conn.execute(
 #     """
 #     UPDATE PLATOS
@@ -200,7 +205,7 @@ for row in cursor:
 # print("############################################")
 # # Listar datos de matriculación
 # print("\n####\ELIMINAR\t####")
-# print("\nPLATOS ELIMINADOS:")
+# print("\nPLATOS:")
 # cursor = conn.execute(
 #     "SELECT * FROM PLATOS"
 # )
@@ -212,7 +217,7 @@ for row in cursor:
 #     WHERE id = 4
 #     """
 # )
-# print("\nPLATOS:")
+# print("\nPLATOS ELIMINADOS:")
 # cursor = conn.execute(
 #     "SELECT * FROM PLATOS"
 # )
@@ -224,9 +229,9 @@ for row in cursor:
 # cursor = conn.execute(
 #     "SELECT * FROM PEDIDOS"
 # )
+# print("\nPEDIDOS:")
 # for row in cursor:
 #     print(row)
-# print("\nPEDIDOS ELIMINADOS:")
 
 # conn.execute(
 #     """
@@ -236,7 +241,7 @@ for row in cursor:
 # )
 
 # # Listar datos de matriculación
-# print("\nPEDIDOS:")
+# print("\nPEDIDOS ELIMINADOS:")
 # cursor = conn.execute(
 #     "SELECT * FROM PEDIDOS"
 # )
@@ -246,21 +251,9 @@ for row in cursor:
 # print("############################################")
 
 
-# # Cerrar conexión
+
+
+
+    
+conn.commit()
 conn.close()
-
-
-
-
-
-
-
-
-
-# #Por que no usas el visual de gith
-# #
-
-
-
-
-
