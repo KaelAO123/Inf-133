@@ -53,8 +53,8 @@ class CrearEstudiante(Mutation):
             carrera=carrera
         )
         estudiantes.append(nuevo_estudiante)
-
         return CrearEstudiante(estudiante=nuevo_estudiante)
+    
 class ActualizarEstudiante(Mutation):
     class Arguments:
         nombre =String()
@@ -129,8 +129,8 @@ class GraphQLRequestHandler(BaseHTTPRequestHandler):
             content_length = int(self.headers["Content-Length"])
             data = self.rfile.read(content_length)
             data = json.loads(data.decode("utf-8"))
-            print(data)
             result = schema.execute(data["query"])
+            print(result.data)
             self.response_handler(200, result.data)
         else:
             self.response_handler(404, {"Error": "Ruta no existente"})

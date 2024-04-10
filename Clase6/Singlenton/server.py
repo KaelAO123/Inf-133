@@ -3,7 +3,6 @@ import json
 
 class Player:
     _instance = None
-
     def __new__(cls, name):
         if not cls._instance:
             cls._instance = super().__new__(cls)
