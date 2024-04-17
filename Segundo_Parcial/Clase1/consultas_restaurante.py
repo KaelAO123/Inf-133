@@ -12,12 +12,11 @@ cursor = conn.execute(
     SELECT PLATOS.nombre, MESAS.numero
     FROM PEDIDOS
     JOIN PLATOS ON PEDIDOS.plato_id = PLATOS.id 
-    JOIN MESAS ON PEDIDOS.mesa_id = MESAS.id
+    JOIN MESAS ON PEDIDOS.mesa_id = MESAS.id  ===
     """
 )
 for row in cursor:
     print(row)
-
 
 # MATRICULAS:
 # ('Juan', 'Perez', 'Ingeniería en Informática', '2024-01-15')

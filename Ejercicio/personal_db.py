@@ -2,7 +2,7 @@
 import sqlite3
 
 # Crear conexión a la base de datos
-conn = sqlite3.connect("Ejercicio\personal.db")
+conn = sqlite3.connect("Ejercicio/personal.db")
 
 
 try:
@@ -72,6 +72,7 @@ conn.execute(
     VALUES ('Ventas','10-04-2020')
     """
 )
+
 conn.execute(
     """
     INSERT INTO DEPARTAMENTOS(nombre,fecha_creacion)
