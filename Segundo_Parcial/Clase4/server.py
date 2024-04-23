@@ -9,6 +9,7 @@ app = Flask(__name__)
 
 # Este decorador asociará la función 'hello_world()' con la ruta raíz ('/') de la aplicación.
 # Esto significa que cuando alguien acceda a la ruta raíz en el navegador, Flask ejecutará esta función.
+
 @app.route("/")
 def hello_world():
     return "¡Hola, mundo!"
