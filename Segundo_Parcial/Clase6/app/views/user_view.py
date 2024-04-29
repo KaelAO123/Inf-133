@@ -14,9 +14,6 @@ def usuarios(users):
 def registro():
     return render_template("registro.html", title="Registro de usuarios")
 
-def eliminar():
-    return render_template("usuarios.html", title="Lista de usuarios")
-
 # La función `actualizar` recibe un usuario
 # y renderiza el template `actualizar.html`
 def actualizar(user):

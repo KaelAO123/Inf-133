@@ -83,7 +83,7 @@ def actualizar(id):
     return redirect(url_for("user.usuarios"))
 
 
-@user_bp.route("/users/<int:id>", methods=["POST"])
+@user_bp.route("/eliminar/<int:id>")
 def eliminar(id):
     # Obtenemos el usuario por su id
     user = User.get_by_id(id)

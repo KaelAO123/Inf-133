@@ -7,7 +7,7 @@ from database import db
 # Inicializa la aplicación Flask
 app = Flask(__name__)
 # Configuración de la base de datos
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///user.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Inicializa `db` con la aplicación Flask
 db.init_app(app)  
