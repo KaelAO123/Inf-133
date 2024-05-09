@@ -10,8 +10,8 @@ class Libro(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     titulo = db.Column(db.String(100), nullable=False)
     autor = db.Column(db.String(100), nullable=False)
-    edicion = db.Column(db.Integer, nullable=False)
-    disponibilidad = db.Column(db.Boolean,nullable=False)
+    edicion = db.Column(db.String(100), nullable=False)
+    disponibilidad = db.Column(db.Integer,nullable=False)
 
     # Inicializa la clase `Libro`
     def __init__(self, titulo, autor, edicion,disponibilidad):

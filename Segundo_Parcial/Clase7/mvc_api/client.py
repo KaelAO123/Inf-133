@@ -11,8 +11,8 @@ url = f"{BASE_URL}/libros"
 nuevo_libro =         {
             "titulo": "Harry Potter",
             "autor": "J. K. Rolling",
-            "edicion": "Infinita",
-            "disponibilidad":5,
+            "edicion": "Sexta",
+            "disponibilidad":True,
         }
 response = requests.post(url, json=nuevo_libro, headers=headers)
 print("Creando un nuevo libro:")
@@ -22,23 +22,23 @@ print(response.json())
 nuevo_libro_2 =         {
             "titulo": "Como Ganar Cocodrilos",
             "autor": "Erick Picavia",
-            "edicion": "Finita",
-            "disponibilidad":7,
+            "edicion": "Decima",
+            "disponibilidad":False,
         }
 nuevo_libro_3 =         {
             "titulo": "Como Enclochar",
             "autor": "Erick Picavia",
             "edicion": "Finita",
-            "disponibilidad":7,
+            "disponibilidad":True,
         }
 response = requests.post(url, json=nuevo_libro_2, headers=headers)
 print("\nCreando el segundo libro:")
 print(response.json())
 
-# Obtener la lista de todos los animales
+# Obtener la lista de todos los libros
 url = f"{BASE_URL}/libros"
 response = requests.get(url, headers=headers)
-print("\nLista de animales:")
+print("\nLista de libros:")
 print(response.json())
 
 # Obtener un libro específico por su ID (por ejemplo, ID=1)

@@ -32,7 +32,7 @@ def create_libro():
     disponibilidad = data.get("disponibilidad")
 
     # Validación simple de datos de entrada
-    if (disponibilidad is None) or not titulo or not autor or edicion is None:
+    if disponibilidad is None or not titulo or not autor or edicion is None:
         return jsonify({"error": "Faltan datos requeridos"}), 400
 
     # Crear un nuevo libro y guardarlo en la base de datos
@@ -46,7 +46,7 @@ def create_libro():
 @libro_bp.route("/libros/<int:id>", methods=["PUT"])
 def update_libro(id):
     libro = Libro.get_by_id(id)
-    
+
     if not libro:
         return jsonify({"error": "Libro no encontrado"}), 404
 
@@ -66,7 +66,7 @@ def update_libro(id):
 @libro_bp.route("/libros/<int:id>", methods=["DELETE"])
 def delete_libro(id):
     libro = Libro.get_by_id(id)
-    
+
     if not libro:
         return jsonify({"error": "Libro no encontrado"}), 404
 
