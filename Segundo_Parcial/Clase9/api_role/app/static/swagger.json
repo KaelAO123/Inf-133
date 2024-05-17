@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.1",
     "info": {
-        "title": "Libro API",
+        "title": "Biblioteca API",
         "version": "1.0.0"
     },
     "paths": {
@@ -250,9 +250,10 @@
                     }
                 },
                 "required": [
-                    "name",
-                    "species",
-                    "age"
+                    "titulo",
+                    "autor",
+                    "edicion",
+                    "disponibilidad"
                 ]
             },
             "User": {
@@ -263,11 +264,22 @@
                     },
                     "password": {
                         "type": "string"
+                    },
+                    "role": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "admin",
+                                "user"
+                            ]
+                        }
                     }
                 },
                 "required": [
                     "username",
-                    "password"
+                    "password",
+                    "role"
                 ]
             },
             "Login": {

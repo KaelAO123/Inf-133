@@ -24,7 +24,7 @@ app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
 
 
 # Configuración de la base de datos
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///libro.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///biblioteca.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 # Inicializa la base de datos
@@ -44,5 +44,3 @@ with app.app_context():
 # Ejecuta la aplicación
 if __name__ == "__main__":
     app.run(debug=True)
-
-#
