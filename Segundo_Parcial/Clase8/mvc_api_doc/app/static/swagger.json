@@ -250,9 +250,10 @@
                     }
                 },
                 "required": [
-                    "name",
-                    "species",
-                    "age"
+                    "titulo",
+                    "autor",
+                    "edicion",
+                    "disponibilidad"
                 ]
             },
             "User": {

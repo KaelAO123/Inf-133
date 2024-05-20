@@ -2,23 +2,23 @@ from database import db
 
 
 # Define la clase `Libro` que hereda de `db.Model`
-# `Libro` representa la tabla `librs` en la base de datos
+# `Libro` representa la tabla `libros` en la base de datos
 class Libro(db.Model):
-    __tablename__ = "librs"
+    __tablename__ = "libros"
 
-    # Define las columnas de la tabla `librs`
+    # Define las columnas de la tabla `libros`
     id = db.Column(db.Integer, primary_key=True)
     titulo = db.Column(db.String(100), nullable=False)
     autor = db.Column(db.String(100), nullable=False)
-    edicion = db.Column(db.String(100), nullable=False)
-    disponibilidad = db.Column(db.Integer,nullable=False)
+    disponibilidad = db.Column(db.Boolean,nullable=False)
+    edicion = db.Column(db.Integer, nullable=False)
 
     # Inicializa la clase `Libro`
-    def __init__(self, titulo, autor, edicion,disponibilidad):
+    def __init__(self, titulo, autor, edicion, disponibilidad):
         self.titulo = titulo
         self.autor = autor
         self.edicion = edicion
-        self.disponibilidad = disponibilidad
+        self.disponibilidad  = disponibilidad
 
     # Guarda un animal en la base de datos
     def save(self):
